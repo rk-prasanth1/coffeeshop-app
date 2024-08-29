@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './assets/logo.png'; // Adjust the path based on your image file
+import logo from '../assets/logo.png'; // Adjust the path based on your image file
 
-const App: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
       <img src={logo} alt="Coffeeshop Logo" style={{ width: '200px', marginBottom: '20px' }} />
@@ -11,5 +11,5 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default Home;
 
