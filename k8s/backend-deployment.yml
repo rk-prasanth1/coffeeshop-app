@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coffeeshop-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: coffeeshop-backend
+  template:
+    metadata:
+      labels:
+        app: coffeeshop-backend
+    spec:
+      containers:
+      - name: coffeeshop-backend
+        image: prasanthrk/coffeeshop-backend:v2
+        ports:
+        - containerPort: 4000
+        env:
+        - name: POSTGRES_URL
+          value: "postgresql://user:password@postgres:5432/coffeeshop"
+---
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coffeeshop-backend-service
+spec:
+  type: LoadBalancer  
+  selector:
+    app: coffeeshop-backend
+  ports:
+    - port: 90
+      targetPort: 4000  
+---
